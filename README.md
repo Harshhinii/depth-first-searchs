@@ -1,6 +1,6 @@
 <h1>ExpNo 2 : Implement Depth First Search Traversal of a Graph</h1> 
-<h3>Name: </h3>
-<h3>Register Number:     </h3>
+<h3>Name: Harshini R </h3>
+<h3>Register Number: 212223220033 </h3>
 <H3>Aim:</H3>
 <p> To Implement Depth First Search Traversal of a Graph using Python 3.</p>
 <h3>Theory:</h3>
@@ -55,7 +55,36 @@ Now, the Stack becomes empty, which means we have visited all the nodes, and our
 </ol></B>
 
 <hr>
-<h3>Sample Input</h3>
+
+<h3>Program:</h3>
+
+```PYTHON
+from collections import deque
+from collections import defaultdict
+def dfs(graph,start,visited,path):
+    path.append(start)
+    visited[start]= True
+    for neighbour in graph[start]:
+        if visited[neighbour]==False:
+            dfs(graph,neighbour,visited,path)
+            visited[neighbour]=True
+    return path
+graph=defaultdict(list)
+n,e=map(int,input().split())
+for i in range(e):
+    u,v= map(str,input().split())
+    graph[u].append(v)
+    graph[v].append(u)
+
+start='A'
+visited=defaultdict(bool)
+path=[]
+traversedpath=dfs(graph,start,visited,path)
+print(traversedpath)
+```
+
+<h3>Output:</h3>
+<h4>Sample Input</h4>
 <hr>
 8 9 <BR>
 A B <BR>
@@ -68,14 +97,16 @@ D F <BR>
 G F <BR>
 F H <BR>
 <hr>
-<h3>Sample Output</h3>
+<h4>Sample Output</h4>
 <hr>
 ['A', 'B', 'E', 'D', 'C', 'G', 'F', 'H']
 
 <hr>
 
+<img width="412" height="255" alt="image" src="https://github.com/user-attachments/assets/f80d15d9-0aee-4269-8140-f6ad9821d3df" />
+
 <hr>
-<h3>Sample Input</h3>
+<h4>Sample Input</h4>
 <hr>
 5 5 <BR>
 0 1 <BR>
@@ -84,11 +115,14 @@ F H <BR>
 2 3 <BR>
 2 4 <BR>
 <hr>
-<h3>Sample Output</h3>
+<h4>Sample Output</h4>
 <hr>
 ['0', '1', '2', '3', '4']
 
 <hr>
+
+<img width="348" height="165" alt="image" src="https://github.com/user-attachments/assets/b5b193a9-47b3-4251-a1d8-887904d2711c" />
+
 <h3>Result:</h3>
 <hr>
 <p>Thus,a Graph was constructed and implementation of Depth First Search for the same graph was done successfully.</p>
